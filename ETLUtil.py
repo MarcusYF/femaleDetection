@@ -106,13 +106,19 @@ def mapFeat2Name(w):
 def genMap_Feat2Name():
     path = '/Users/yaofan29597/Desktop/Princetechs/学习资料/research/Lookalike/app_label_category/'
     path_tag_name = path + 'tag_name.csv'
-    path_loc_Ind = path + 'loc_Ind.csv'
+    path_loc_ind = path + 'loc_Ind.csv'
+    path_mod_ind = path + 'mod_info.csv'
 
     tag_name = pd.read_csv(path_tag_name)
-    loc_ind = pd.read_csv(path_loc_Ind, header=None)
-    loc_ind.columns = ['name', 'tagId']
-    tagName = tag_name.loc[:, ['tagId', 'name']]
+    tag_name_ = tag_name.loc[:, ['tagId', 'name']]
 
-    a = dict(zip(tagName['tagId'], tagName['name']))
+    loc_ind = pd.read_csv(path_loc_ind, header=None)
+    loc_ind.columns = ['name', 'tagId']
+
+    mod_ind = pd.read_csv(path_mod_ind, header=None)
+    mod_ind.columns = ['name', 'tagId', 'na', 'na', 'na']
+
+    a = dict(zip(tag_name_['tagId'], tag_name_['name']))
     b = dict(zip(loc_ind['tagId'], loc_ind['name']))
-    return {**a, **b}
+    c = dict(zip(mod_ind['tagId'], mod_ind['name']))
+    return {**a, **b, **c}

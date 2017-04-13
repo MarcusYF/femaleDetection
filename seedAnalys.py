@@ -10,8 +10,8 @@ import random
 from sklearn.metrics import roc_auc_score
 import ETLUtil
 
-#import sys
-# del sys.modules["ModelCollection"]
+# import sys
+# del sys.modules["ETLUtil"]
 import BenchMarks
 
 import numpy as np
